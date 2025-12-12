@@ -1,0 +1,22 @@
+services:
+  backend-service:
+    image: "playlist-iso"
+    container_name: "playlist-backend"
+    depends_on:
+      - database-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database-service:5432/Playlist
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_SHOW_SQL=true
+    ports:
+      - 4444:8008
+  database-service:
+    image: "postgres"
+    container_name: "playlist-database"
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=Playlist
+    ports:
+      - 2345:5432

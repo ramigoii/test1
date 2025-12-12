@@ -14,8 +14,8 @@ import java.util.Objects;
 @Service
 @RequiredArgsConstructor
 public class SongServiceImpl implements SongService {
-    private SongMapper songMapper;
-    private SongRepository songRepository;
+    private final SongMapper songMapper;
+    private final SongRepository songRepository;
 
     @Override
     public List<SongDto> getAll() {

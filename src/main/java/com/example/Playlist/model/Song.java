@@ -18,7 +18,7 @@ import java.util.List;
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="t_id")
+    @Column(name="song_id")
     private Long id;
 
     @Column(name="t_title")
@@ -28,9 +28,15 @@ public class Song {
     private String year;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "artist_id")
     private Artist artist;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    List<Playlist> playlist;
+    @JoinTable(
+            name = "t_song_playlists",
+            joinColumns = @JoinColumn(name = "song_id"),
+            inverseJoinColumns = @JoinColumn(name = "playlist_id")
+    )
+    List<Playlist> playlists;
 
 }
