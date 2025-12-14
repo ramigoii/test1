@@ -31,7 +31,7 @@ public class MyUserService implements UserDetailsService {
     }
 
     public User registr(User model) {
-        if (userRepository.findByUsername(model.getEmail()) != null) {
+        if (userRepository.findByUsername(model.getUsername()) != null) {
             throw new IllegalArgumentException("User with this email already exists");
         }
 
