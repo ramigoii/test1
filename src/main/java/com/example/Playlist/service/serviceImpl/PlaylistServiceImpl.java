@@ -36,7 +36,6 @@ public class PlaylistServiceImpl implements PlaylistService {
     public PlaylistDto update(Long id, PlaylistDto playlistDto) {
         Playlist dto = playlistMapper.toEntity(playlistDto);
         Playlist ent = playlistRepository.findById(id).orElse(null);
-        ent.setId(dto.getId());
         ent.setName(dto.getName());
         ent.setDescription(dto.getDescription());
         return playlistMapper.toDto(playlistRepository.save(ent));

@@ -37,7 +37,6 @@ public class SongServiceImpl implements SongService {
         Song dto = songMapper.toEntity(songDto);
         Song ent = songRepository.findById(id).orElse(null);
 
-        ent.setId(dto.getId());
         ent.setTitle(dto.getTitle());
         ent.setYear(dto.getYear());
         return songMapper.toDto(songRepository.save(ent));

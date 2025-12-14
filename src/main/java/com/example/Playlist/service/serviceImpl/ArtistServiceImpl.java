@@ -35,7 +35,6 @@ public class ArtistServiceImpl implements ArtistService {
     public ArtistDto update(Long id, ArtistDto artistDto) {
         Artist dto = artistMapper.toEntity(artistDto);
         Artist ent = artistRepository.findById(id).orElse(null);
-        ent.setId(dto.getId());
         ent.setName(dto.getName());
         ent.setGenre(dto.getGenre());
         return artistMapper.toDto(artistRepository.save(ent));    }
